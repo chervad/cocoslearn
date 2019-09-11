@@ -21,6 +21,21 @@ bool GameOverScreen::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
 
+	auto menuTitle = MenuItemImage::create("GameOverScreen/Game_Over.png"
+								, "GameOverScreen/Game_Over.png");
+
+	auto retryItem = MenuItemImage::create("GameOverScreen/Retry_Button.png"
+										 , "GameOverScreen/Retry_Button(Click).png"
+										 , CC_CALLBACK_1(GameOverScreen::GoToGameScene, this));
+
+	auto mainMenuItem = MenuItemImage::create("GameOverScreen/Menu_Button.png"
+											, "GameOverScreen/Menu_Button(Click).png"
+											, CC_CALLBACK_1(GameOverScreen::GoToMainMenuScene, this));
+
+	auto menu = Menu::create(menuTitle, retryItem, mainMenuItem, NULL);
+	menu->alignItemsVerticallyWithPadding(visibleSize.height / 4);
+	this->addChild(menu);
+
     return true;
 }
 
