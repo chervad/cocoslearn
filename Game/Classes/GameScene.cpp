@@ -21,6 +21,19 @@ bool GameScreen::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
 
+	auto pauseItem = MenuItemImage::create("GameScreen/Pause_Button.png"
+										 , "GameScreen/Pause_Button(Click).png"
+										 , CC_CALLBACK_1(GameScreen::GoToPauseScene, this));
+	auto widthPauseItem = pauseItem->getContentSize().width;
+	auto heightPauseItem = pauseItem->getContentSize().height;
+	auto pointX = (0.75 * widthPauseItem) + origin.x;
+	auto pointY = visibleSize.height - (0.75 * heightPauseItem) + origin.y;
+	pauseItem->setPosition(Point(pointX, pointY));
+
+	auto menu = Menu::create(pauseItem, NULL);
+	menu->setPosition(Point::ZERO);
+	this->addChild(menu);
+
     return true;
 }
 

@@ -21,11 +21,11 @@ bool MainMenu::init()
     Point origin = Director::getInstance()->getVisibleOrigin();
 
 	auto menuTitle = MenuItemImage::create("MainMenuScreen/Game_Title.png"
-		, "MainMenuScreen/Game_Title.png");
+										 , "MainMenuScreen/Game_Title.png");
 
 	auto playItem = MenuItemImage::create("MainMenuScreen/Play_Button.png"
-		, "MainMenuScreen/Play_Button(Click).png"
-		, CC_CALLBACK_1(MainMenu::GoToGameScene, this));
+										, "MainMenuScreen/Play_Button(Click).png"
+										, CC_CALLBACK_1(MainMenu::GoToGameScene, this));
 
 	auto menu = Menu::create(menuTitle, playItem, NULL);
 	menu->alignItemsVerticallyWithPadding(visibleSize.height / 4);
