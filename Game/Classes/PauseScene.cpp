@@ -52,5 +52,5 @@ void PauseMenu::GoToMainMenuScene(Ref *pSender) {
 void PauseMenu::Retry(Ref *pSender) {
 	auto scene = GameScreen::createScene();
 	Director::getInstance()->popScene();
-	Director::getInstance()->replaceScene(scene);
+	Director::getInstance()->replaceScene(TransitionPageTurn::create(3, scene, false));
 }

@@ -31,11 +31,20 @@ bool MainMenu::init()
 	menu->alignItemsVerticallyWithPadding(visibleSize.height / 4);
 	this->addChild(menu);
 
+	auto backgroundSprite = Sprite::create("MainMenuScreen/Background.png");
+	auto pointX = (visibleSize.width / 2) + origin.x;
+	auto pointY = (visibleSize.height / 2) + origin.y;
+	backgroundSprite->setPosition(Point(pointX, pointY));
+	auto scaleX = visibleSize.width / backgroundSprite->getContentSize().width;
+	auto scaleY = visibleSize.height / backgroundSprite->getContentSize().height;
+	backgroundSprite->setScale(scaleX <= scaleY ? scaleX : scaleY);
+	this->addChild(backgroundSprite, -1);
+
     return true;
 }
 
 void MainMenu::GoToGameScene(Ref *pSender) {
 	auto scene = GameScreen::createScene();
 
-	Director::getInstance()->replaceScene(scene);
+	Director::getInstance()->replaceScene(TransitionFade::create(1.0, scene));
 }

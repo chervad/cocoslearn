@@ -39,10 +39,10 @@ bool GameScreen::init()
 
 void GameScreen::GoToPauseScene(Ref *pSender) {
 	auto scene = PauseMenu::createScene();
-	Director::getInstance()->pushScene(scene);
+	Director::getInstance()->pushScene(TransitionFlipX::create(3, scene));
 }
  
 void GameScreen::GoToGameOverScene(Ref *pSender) {
 	auto scene = GameOverScreen::createScene();
-	Director::getInstance()->replaceScene(scene);
+	Director::getInstance()->replaceScene(TransitionZoomFlipY::create(3, scene));
 }
